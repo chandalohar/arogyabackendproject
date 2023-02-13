@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/frontend/diseaseCategory/diseaseCategory.js"></script>
+    <script src="viewAll.js"></script>
+    <script src="searchAll.js"></script>
+    <script src="/frontend/dataTableShow/dataShow.js"></script>
+</head>
+<body>
+    <!-- <h4>Welcome to admin Pharma Home Page</h4> -->
+    <!-- <a href="http://127.0.0.1:5500/frontend/pharmalogin/viewAllDisease.html" target="_blank">View Disease Categories</a> |
+    <a href="http://127.0.0.1:5500/frontend/pharmalogin/viewAllProduct.html" target="_blank">View All Product Medicines</a> |
+     -->
+    <br/>
+    <h4>Welcome to admin Pharma Home Page</h4>
+    <a href="http://127.0.0.1:5500/frontend/dataTableShow/dataTableShow.html" target="_blank" style="text-decoration: none;">
+        <button type="submit">  View Disease Categories</button>
+      </a>    
+  
+    <a href="http://127.0.0.1:5500/frontend/dataTableShow/productShow.html" target="_blank" style="text-decoration: none;">
+        <button type="submit">   View All Product Medicines</button>
+       </a> 
+   
+<br><br><br>
+<a href="http://127.0.0.1:5500/frontend/diseaseCategory/diseaseCategory.html" target="_blank">
+    <button type="submit">Add Disease Categories</button></a> |
+<a href="http://127.0.0.1:5500/frontend/productMedicine/productMedicine.html" target="_blank">
+    <button type="submit">Add Product Medicines</button></a> |
+
+            
+            <h5>Search Disease Categories Details by Name</h5>
+            <input type="search" id="DiseaseName" onkeyup="searchDiseaseCategoryByName()"/>
+            <div>
+                <ol id="resultbyname">
+        
+                </ol>
+            </div>
+            <br><br>
+            <h5>Search Disease Categories Details by ID</h5>
+            <input type="search" id="_id" onkeyup="searchDiseaseCategoryById()"/>
+            <div>
+                <ol id="resultbyid">
+        
+                </ol>
+            </div>
+            <br><br>
+            <h5>Search Medicine product by Name</h5>
+            <input type="search" id="medicineName" onkeyup="searchProductMedicineByName()"/>
+            <div>
+                <ol id="resultbymediname">
+        
+                </ol>
+            </div>
+            <br><br>
+            <h5>Search Medicine product by ID</h5>
+            <input type="search" id="m_id" onkeyup="searchProductMedicineById()"/>
+            <div>
+                <ol id="resultbymediid">
+        
+                </ol>
+            </div>
+            <br><br><input type="button" value="logout" onclick="logout()"/>
+
+
+
+</body>
+</html>
+
+

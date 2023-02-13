@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="productMedicine.js"></script>
+</head>
+<body>
+    <h2>Medicine Product Page</h2>
+    <form>
+        <label>Medicine Product ID</label>
+        <input type="number" id="_id"/><br/><br/>
+        <label>medicineName</label>
+        <input type="text" id="medicineName"/><br/><br/>
+        <label>medicineQuantity</label>
+        <input type="text" id="medicineQuantity"/><br/><br/>
+        <label>medicinePrice</label>
+        <input type="text" id="medicinePrice"/><br/><br/>
+        <label>medicineImage (URL)</label>
+        <input type="url" id="medicineImage"/><br/><br/>
+        
+        <br/>
+        <input type="button" value="productMedicine" onclick="productMedicine()"/>
+        <input type="reset" value="reset"/>
+    </form>
+    <span id="msg" style="color:red"></span>
+</body>
+</html>
