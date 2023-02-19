@@ -2,15 +2,20 @@ let mongoose=require("mongoose");
 mongoose.pluralize(null);
 let orderCollectionSchema = mongoose.Schema({
     od_id:{type: Number,
+        unique:true,
         required:[true,"order id is required"]
+      
     },
     cust_id:{type: Number,
+        unique:true,
         required:[true,"customer id is required"]
     },
     c_id:{type: Number,
+        unique:true,
         required:[true,"category id is required"]
     },
     p_id:{type: Number,
+        unique:true,
         required:[true,"Product id is required"]
     },
    

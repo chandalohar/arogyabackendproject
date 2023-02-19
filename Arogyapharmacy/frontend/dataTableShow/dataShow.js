@@ -1,6 +1,15 @@
 // load disease categories
 async function loadDiseaseCategorywithImage() {
-    let res = await fetch("http://localhost:3000/api/diseasecat/findAllDisease");
+    try{ 
+    let res = await fetch("http://localhost:3000/api/diseasecat/findAllDisease",{
+        method:"get",
+    headers:{
+        "Content-type":"application/json",
+        "authorization":localStorage.getItem("token")
+    }
+    });
+
+
     let data = await res.json();
     console.log(data);
     var tableTag = document.createElement("table"); 
@@ -67,6 +76,12 @@ async function loadDiseaseCategorywithImage() {
     tableTag.appendChild(secondRow);
     }
     document.getElementsByTagName("body")[0].appendChild(tableTag);
+}catch(ex){
+    alert(ex);
+}
+
+
+
 }
 // load medicine products
 async function loadMediciProductImage() {
@@ -88,7 +103,7 @@ async function loadMediciProductImage() {
     firstRowSecondColumn.appendChild(firstRowSecondColumnValue);
 
     var firstRowThirdColumn = document.createElement("th");
-    var firstRowThirdColumnValue = document.createTextNode("Disease Quantity");
+    var firstRowThirdColumnValue = document.createTextNode("Disease Description");
     firstRowThirdColumn.appendChild(firstRowThirdColumnValue);
 
     var firstRowFourthColumn = document.createElement("th");
@@ -142,7 +157,7 @@ async function loadMediciProductImage() {
     imageTagValue.setAttribute("height","150px");
     secondRowImageColumn.setAttribute("class","myImageData");   
 
-    //myImageData
+
 
     secondRowImageColumn.appendChild(imageTagValue);
    
@@ -159,6 +174,7 @@ async function loadMediciProductImage() {
     tableTag.appendChild(secondRow);
     }
     document.getElementsByTagName("body")[0].appendChild(tableTag);
+    
 }
 
 
@@ -167,7 +183,127 @@ async function loadMediciProductImage() {
 
 
 
+// view all customer orders
+async function viewAllCustOrders() {
+    let res = await fetch("http://localhost:3000/api/ordercollection/findAllOrders");
+    let data = await res.json();
+    console.log(data);
+    var tableTag = document.createElement("table"); 
+    tableTag.setAttribute("border","2");  
+    tableTag.setAttribute("class","table table-striped");
+    
+    var firstRow = document.createElement("tr");
+   
+    var firstRowFirstColumn = document.createElement("th");
+    var firstRowFirstColumnValue = document.createTextNode("ORDER ID");
+    firstRowFirstColumn.appendChild(firstRowFirstColumnValue);
 
+    var firstRowSecondColumn = document.createElement("th");
+    var firstRowSecondColumnValue = document.createTextNode("CUSTOMER ID");
+    firstRowSecondColumn.appendChild(firstRowSecondColumnValue);
+
+    var firstRowThirdColumn = document.createElement("th");
+    var firstRowThirdColumnValue = document.createTextNode("CATEGORY ID");
+    firstRowThirdColumn.appendChild(firstRowThirdColumnValue);
+
+    var firstRowFourthColumn = document.createElement("th");
+    var firstRowFourthColumnValue = document.createTextNode("PRODUCT ID");
+    firstRowFourthColumn.appendChild(firstRowFourthColumnValue);
+
+    var firstRowFifthColumn = document.createElement("th");
+    var firstRowFifthColumnValue = document.createTextNode("PRODUCT NAME");
+    firstRowFifthColumn.appendChild(firstRowFifthColumnValue);
+
+    //
+    var firstRow6Column = document.createElement("th");
+    var firstRow6ColumnValue = document.createTextNode("PRODUCT QUANTITY");
+    firstRow6Column.appendChild(firstRow6ColumnValue);
+    // 
+    var firstRow7Column = document.createElement("th");
+    var firstRow7ColumnValue = document.createTextNode("PRODUCT AMOUNT");
+    firstRow7Column.appendChild(firstRow7ColumnValue);
+    //
+    var firstRow8Column = document.createElement("th");
+    var firstRow8ColumnValue = document.createTextNode("DATE OF ORDER");
+    firstRow8Column.appendChild(firstRow8ColumnValue);
+
+
+    firstRow.appendChild(firstRowFirstColumn);
+    firstRow.appendChild(firstRowSecondColumn);
+    firstRow.appendChild(firstRowThirdColumn);
+    firstRow.appendChild(firstRowFourthColumn);
+    firstRow.appendChild(firstRowFifthColumn);
+    firstRow.appendChild(firstRow6Column); 
+     firstRow.appendChild(firstRow7Column);
+     firstRow.appendChild(firstRow8Column);
+
+
+    tableTag.appendChild(firstRow);
+
+    for(i=0;i<data.length;i++){
+    var secondRow = document.createElement("tr");
+   
+   
+
+
+    var secondRowFirstColumn = document.createElement("td");
+    var secondRowFirstColumnValue = document.createTextNode(data[i].od_id);
+    secondRowFirstColumn.appendChild(secondRowFirstColumnValue);
+
+    var secondRowSecondColumn = document.createElement("td");
+    var secondRowSecondColumnValue = document.createTextNode(data[i].cust_id);
+    secondRowSecondColumn.appendChild(secondRowSecondColumnValue);
+
+
+    var medicineQuantityColumn = document.createElement("td");
+    var medicineQuantityColumnValue = document.createTextNode(data[i].c_id);
+    medicineQuantityColumn.appendChild(medicineQuantityColumnValue);
+
+
+    var medicinePriceColumn = document.createElement("td");
+    var medicinePriceColumnValue = document.createTextNode(data[i].p_id);
+    medicinePriceColumn.appendChild(medicinePriceColumnValue);
+
+
+
+
+    var firstRowFifthColumn = document.createElement("td");
+    var firstRowFifthColumnValue = document.createTextNode(data[i].p_name);
+    firstRowFifthColumn.appendChild(firstRowFifthColumnValue);
+
+    //
+    var firstRow6Column = document.createElement("td");
+    var firstRow6ColumnValue = document.createTextNode(data[i].p_qty);
+    firstRow6Column.appendChild(firstRow6ColumnValue);
+    // 
+    var firstRow7Column = document.createElement("td");
+    var firstRow7ColumnValue = document.createTextNode(data[i].p_price);
+    firstRow7Column.appendChild(firstRow7ColumnValue);
+    //
+    var firstRow8Column = document.createElement("td");
+    var firstRow8ColumnValue = document.createTextNode(data[i].date_id);
+    firstRow8Column.appendChild(firstRow8ColumnValue);
+   
+
+
+
+    secondRow.appendChild(secondRowFirstColumn);
+    secondRow.appendChild(secondRowSecondColumn);
+    secondRow.appendChild(medicineQuantityColumn);
+    secondRow.appendChild(medicinePriceColumn);
+    //
+    secondRow.appendChild(firstRowFifthColumn);
+    secondRow.appendChild(firstRow6Column);
+    secondRow.appendChild(firstRow7Column);
+    secondRow.appendChild(firstRow8Column);
+
+
+
+    tableTag.appendChild(secondRow);
+    }
+    document.getElementsByTagName("body")[0].appendChild(tableTag);
+}
+//
 
 
 

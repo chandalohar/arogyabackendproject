@@ -20,9 +20,12 @@ function signIn() {
         }
     }).then(res=>res.json()).then(result=>{
                 //console.log(result);
-        if(result.msg=="Admin login successfully"){
+                        console.log(result.token);
+        //sessionStorage.setItem("token",result.token);
+        localStorage.setItem("token",result.token);
+        if(result.msg=="Admin done login successfully"){
             window.location.href="http://127.0.0.1:5500/frontend/pharmalogin/adminPharma.html"
-        }else if(result.msg=="customer login successfully"){
+        }else if(result.msg=="customer done login successfully"){
             window.location.href="http://127.0.0.1:5500/frontend/pharmalogin/custPharma.html"
         } else {
             document.getElementById("msg").innerHTML=result.msg;
@@ -31,10 +34,15 @@ function signIn() {
     }).catch(error=>console.log(error));
     reset();
 }
+
+
+
+
+
 function signUp() {
-    var fnameValue = document.getElementById("fname").value;
-    var lnameValue = document.getElementById("lname").value;
-    var mobnovalue = document.getElementById("mobno").value;
+    // var fnameValue = document.getElementById("fname").value;
+    // var lnameValue = document.getElementById("lname").value;
+    // var mobnovalue = document.getElementById("mobno").value;
     var emailidValue = document.getElementById("emailid").value;
     var passwordValue = document.getElementById("password").value;
     var adminValue = document.getElementsByName("typeofuser")[0].checked;
@@ -48,8 +56,7 @@ function signUp() {
 
     }
     
-    var login = {fname:fnameValue,lname:lnameValue,mobno:mobnovalue
-        ,emailid:emailidValue,password:passwordValue,typeofuser:typeofuserValue};
+    var login = {emailid:emailidValue,password:passwordValue,typeofuser:typeofuserValue};
    console.log(login);
     fetch("http://localhost:3000/api/login/signUp",{
         method:"post",
@@ -65,9 +72,9 @@ function signUp() {
 }
 //
 function reset() {
-    document.getElementById("fname").value="";
-    document.getElementById("lname").value="";
-    document.getElementById("mobno").value="";
+    // document.getElementById("fname").value="";
+    // document.getElementById("lname").value="";
+    // document.getElementById("mobno").value="";
 
     document.getElementById("emailid").value="";
     document.getElementById("password").value="";

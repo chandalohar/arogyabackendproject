@@ -15,4 +15,23 @@ let storeOrderCollection = async (request,response)=> {
     }
 }
 // 
-module.exports = {storeOrderCollection};
+let findAllOrders = async(request,response)=> {
+    try {
+        let result = await orderCollectionModal.find({});
+        response.json(result);
+    } catch (error) {
+        response.json(error);
+    }
+}
+//
+let findcustomerorderById = async (reqeust,response)=> {
+    try {
+        let od_id = reqeust.params.od_id;
+        let result = await orderCollectionModal.find({od_id:od_id});
+        response.json(result);
+    } catch (error) {
+        response.json(error);
+    }
+}
+//
+module.exports = {storeOrderCollection,findAllOrders,findcustomerorderById};

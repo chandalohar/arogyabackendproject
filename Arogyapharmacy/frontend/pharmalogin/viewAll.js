@@ -1,14 +1,26 @@
 
 async function viewAllCategoriesDisease(){
+    try{ 
+
     let result = document.getElementById("result");
-    let respnose = await fetch("http://localhost:3000/api/diseasecat/findAllDisease");
+    let respnose = await fetch("http://localhost:3000/api/diseasecat/findAllDisease",{
+    method:"get",
+    headers:{
+        "Content-type":"application/json",
+        "authorization":localStorage.getItem("token")
+    }
+    
+ } );
     let data = await respnose.json();
-    console.log(data);
-   //result.innerHTML = data.map(obj=>"DiseaseId"+obj._id,"CategoryName"+obj.DiseaseName,
-  // "DiseaseImage"+obj.DiseaseImage).join("<br/>");
+    
+   
     result.innerHTML = data.map(obj=>"<li>CategoryId "+obj._id+"CategoryName "+obj.DiseaseName+
     "CategoryImage "+obj.DiseaseImage+"</li>").join("<br/>");
     console.log(data);   
+}catch(ex){
+    alert(ex);
+} 
+  
 }
 
 
@@ -30,6 +42,8 @@ async function viewAllMedicineProduct(){
 }
 
 function logout() {
+    localStorage.removeItem("token");
+
     window.location.href="http://127.0.0.1:5500/frontend/pharmalogin/index.html"   
 }
 

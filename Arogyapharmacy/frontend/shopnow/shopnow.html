@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="shopnow.js"></script>
+    <script src="searchorder.js"></script>
 </head>
 <body>
     <h2></h2>
@@ -34,5 +35,23 @@
        
     </form>
     <span id="msg" style="color:red"></span>
+
+    <h5>search your order by your order Id</h5>
+    <input type="search" id="order_id" onkeyup="searchByOrderId()"/>
+    <div>
+        <ol id="orderbyid">
+           
+
+        </ol>
+    </div>
+   
+    <br/>
+
+<!-- <a href="http://127.0.0.1:5500/frontend/shopnow/placeorder.html" target="_blank" style="text-decoration: none;">
+        <button type="submit">PLACE THE ORDER</button>
+       </a> 
+
+       <br/> -->
+
 </body>
 </html>
